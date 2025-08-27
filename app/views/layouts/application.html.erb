@@ -11,17 +11,25 @@
 </head>
 <body>
   <!-- ヘッダー -->
-  <header class="navbar">
-    <div class="container row-between">
-      <a class="brand" href="<%= root_path %>">しらゆき歯科(仮)</a>
-      <nav class="topnav">
-        <%= link_to "診療内容", "#services" %>
-        <%= link_to "診療時間", "#hours" %>
-        <%= link_to "アクセス", "#access" %>
-        <%= link_to "Web予約", new_reservation_path, class: "btn btn-primary" %>
-      </nav>
-    </div>
-  </header>
+<header class="site-header">
+  <div class="container row-between header-wrap">
+    <a class="brand" href="<%= root_path %>">しらゆき歯科</a>
+
+    <!-- ハンバーガー -->
+    <button class="nav-toggle" aria-expanded="false" aria-controls="nav" aria-label="メニュー">
+      ☰
+    </button>
+
+    <!-- ナビ -->
+    <nav id="nav" class="site-nav" aria-label="主なナビゲーション">
+      <a href="#services">診療内容</a>
+      <a href="#hours">診療時間</a>
+      <a href="#access">アクセス</a>
+      <%= link_to "Web予約", new_reservation_path, class: "btn btn-primary" %>
+    </nav>
+  </div>
+</header>
+
 
   <!-- メインコンテンツ -->
   <main class="container content">

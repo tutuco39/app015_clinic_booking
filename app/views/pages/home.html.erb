@@ -3,26 +3,110 @@
 </header>
 
 <main id="main">
-  <!-- HERO -->
-<section class="hero">
-  <div class="hero-overlay">
-    <div class="container">
-      <h1 class="hero-title">
-        やさしい治療を、<br>通いやすく。
-      </h1>
-      <p class="hero-lead">
-        しらゆき歯科(仮)は、白を基調とした落ち着いた空間で、<br>
-        丁寧なカウンセリングと痛みの少ない治療を心がけています。
-      </p>
+  <!-- HERO（背景画像は CSS の .hero { background: url("hero_bg.jpg") ... } で設定） -->
+  <section class="hero">
+    <div class="hero-overlay">
+      <div class="container">
+        <h1 class="hero-title">
+          やさしい治療を、<br>通いやすく。
+        </h1>
+        <p class="hero-lead">
+          しらゆき歯科(仮)は、白を基調とした落ち着いた空間で、<br>
+          丁寧なカウンセリングと痛みの少ない治療を心がけています。
+        </p>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
+
+  <!-- 診療内容 -->
+  <section id="services" class="section">
+    <div class="container">
+      <h2>診療内容</h2>
+      <div class="services-grid">
+        <article class="card">
+          <h3>一般歯科</h3>
+          <p>むし歯・歯周病の治療。できる限り痛みを抑えた処置を行います。</p>
+        </article>
+
+        <article class="card">
+          <h3>予防歯科</h3>
+          <p>定期検診・クリーニング・ブラッシング指導で健康を維持します。</p>
+        </article>
+
+        <article class="card">
+          <h3>小児歯科</h3>
+          <p>お子さまが怖くないよう、やさしく丁寧に診療します。</p>
+        </article>
+
+        <article class="card">
+          <h3>矯正相談</h3>
+          <p>見た目や噛み合わせのお悩みを専門医と連携してサポート。</p>
+        </article>
+
+        <article class="card">
+          <h3>口腔外科</h3>
+          <p>親知らず・顎関節のご相談など、外科的処置にも対応。</p>
+        </article>
+
+        <article class="card">
+          <h3>ホワイトニング</h3>
+          <p>自然な白さを目指し、カウンセリングから丁寧に行います。</p>
+        </article>
+      </div>
+    </div>
+  </section>
 
 
+  <!-- 当院について -->
+  <section class="section soft">
+    <div class="container two-col">
+      <div>
+        <h2>当院について</h2>
+        <p>患者さまの不安に寄り添い、しっかり説明することを大切にしています。
+          <br>バリアフリー設計で、ベビーカー・車椅子でも安心してお越しいただけます。</p>
+        <ul class="list">
+          <li>土曜診療・平日19時まで</li>
+          <li>キッズスペースあり</li>
+          <li>個室カウンセリング対応</li>
+        </ul>
+      </div>
+      <div class="note">
+        <p class="muted">※ 本サイトはデモです。文言・画像は自由に差し替えてください。</p>
+      </div>
+    </div>
+  </section>
 
-  <!-- 以下、診療内容 / 当院について / 診療時間 / アクセス / 予約フォーム(デモ) を
-       これまでのHTMLそのまま貼り付けでOK（時間表は前回の●/／のテーブル） -->
-  <!-- ...（省略：以前配布の index.html 中身を貼る）... -->
+  <!-- 診療時間 -->
+  <section id="hours" class="section">
+    <div class="container">
+      <h2>診療時間</h2>
 
+      <div class="hours-img">
+        <%= image_tag "hours_table.png", alt: "診療時間表", class: "hours-image" %>
+      </div>
 
+        <div class="hours-aside">
+          <p class="muted" style="margin-bottom:12px">最終受付は各終了時刻の30分前です。</p>
+          <%= link_to "Web予約へ", new_reservation_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- アクセス -->
+  <section id="access" class="section soft">
+    <div class="container two-col">
+      <div>
+        <h2>アクセス</h2>
+        <p>
+          〒123-4567 東京都サンプル区1-2-3 サンプルビル1F<br>
+          最寄り：サンプル駅 徒歩3分
+        </p>
+        <p><a class="link" href="#" aria-label="Googleマップで開く（ダミー）">Googleマップで開く</a></p>
+      </div>
+      <div class="map-box" role="img" aria-label="地図プレビュー（ダミー）">
+        地図プレビュー
+      </div>
+    </div>
+  </section>
 </main>
