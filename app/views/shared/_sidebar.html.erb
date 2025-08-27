@@ -1,0 +1,24 @@
+<nav class="sidenav">
+  <div class="sb-section">
+    <div class="sb-title">ご案内</div>
+    <ul>
+      <li><a href="<%= root_path %>#services">診療内容</a></li>
+      <li><a href="<%= root_path %>#hours">診療時間</a></li>
+      <li><a href="<%= root_path %>#access">アクセス</a></li>
+      <li><%= link_to "Web予約", new_reservation_path, class: "sb-cta" %></li>
+    </ul>
+  </div>
+
+  <div class="sb-section">
+    <div class="sb-title">お問い合わせ</div>
+    <ul>
+      <li><a href="tel:0312345678">電話：03-1234-5678</a></li>
+      <li><a href="mailto:info@example.com">メール：info@example.com</a></li>
+    </ul>
+  </div>
+
+  <div class="sb-section muted small">
+    <div class="sb-title">休診</div>
+    <p>水曜午後・土曜午後・日曜・祝日</p>
+  </div>
+</nav>
