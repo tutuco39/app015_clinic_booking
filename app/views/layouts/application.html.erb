@@ -1,22 +1,45 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= content_for(:title) || "App015 Clinic Booking" %></title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <%= csrf_meta_tags %>
-    <%= csp_meta_tag %>
+<html lang="ja">
+<head>
+  <meta charset="utf-8" />
+  <title>しらゆき歯科</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
 
-    <%= yield :head %>
+  <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+</head>
+<body>
+  <!-- ヘッダー -->
+  <header class="navbar">
+    <div class="container row-between">
+      <a class="brand" href="<%= root_path %>">しらゆき歯科(仮)</a>
+      <nav class="topnav">
+        <%= link_to "診療内容", "#services" %>
+        <%= link_to "診療時間", "#hours" %>
+        <%= link_to "アクセス", "#access" %>
+        <%= link_to "Web予約", new_reservation_path, class: "btn btn-primary" %>
+      </nav>
+    </div>
+  </header>
 
-    <link rel="manifest" href="/manifest.json">
-    <link rel="icon" href="/icon.png" type="image/png">
-    <link rel="icon" href="/icon.svg" type="image/svg+xml">
-    <link rel="apple-touch-icon" href="/icon.png">
-    <%= stylesheet_link_tag "application" %>
-  </head>
+  <!-- メインコンテンツ -->
+  <main class="container content">
+    <% if notice %><p class="notice"><%= notice %></p><% end %>
+    <% if alert  %><p class="alert"><%= alert  %></p><% end %>
 
-  <body>
     <%= yield %>
-  </body>
+  </main>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="container">
+      <p class="brand">しらゆき歯科(仮)</p>
+      <p>〒123-4567 東京都サンプル区1-2-3 サンプルビル1F ｜ TEL <a href="tel:0312345678">03-1234-5678</a></p>
+      <p class="muted small">© <span id="year"></span> Shirayuki Dental Clinic</p>
+    </div>
+  </footer>
+
+  <%= javascript_importmap_tags %>
+</body>
 </html>

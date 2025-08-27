@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
-  root "reservations#new"
+  root "pages#home"
   resources :reservations, only: [:new, :create, :index] do
-    get :slots, on: :collection # /reservations/slots?date=YYYY-MM-DD
+    get :slots, on: :collection
   end
 end
 

@@ -26,3 +26,7 @@ group :development, :test do
 end
 
 
+
+gem "sassc-rails", "~> 2.1"
+
+gem "importmap-rails", "~> 2.2"
