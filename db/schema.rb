@@ -20,5 +20,6 @@ ActiveRecord::Schema[7.2].define(version: 2025_08_27_122003) do
     t.datetime "starts_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["starts_at"], name: "index_reservations_on_starts_at", unique: true
   end
 end
