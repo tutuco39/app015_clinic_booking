@@ -95,18 +95,32 @@
 
   <!-- アクセス -->
   <section id="access" class="section soft">
-    <div class="container two-col">
-      <div>
-        <h2>アクセス</h2>
+    <h2>アクセス</h2>
+    <div class="container two-col access-grid">
+      <!-- マップを左 -->
+      <div class="map-embed">
+        <iframe
+          title="地図プレビュー"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+          src="https://www.google.com/maps?q=<%= ERB::Util.url_encode('東京都サンプル区1-2-3 サンプルビル1F') %>&output=embed">
+        </iframe>
+      </div>
+
+      <!-- 住所を右 -->
+      <div class="access-info">
         <p>
           〒123-4567 東京都サンプル区1-2-3 サンプルビル1F<br>
           最寄り：サンプル駅 徒歩3分
         </p>
-        <p><a class="link" href="#" aria-label="Googleマップで開く（ダミー）">Googleマップで開く</a></p>
-      </div>
-      <div class="map-box" role="img" aria-label="地図プレビュー（ダミー）">
-        地図プレビュー
+        <p>
+          <a class="link" href="https://www.google.com/maps/search/?api=1&query=<%= ERB::Util.url_encode('東京都サンプル区1-2-3 サンプルビル1F') %>" target="_blank" rel="noopener">
+            <br>Googleマップで開く
+          </a>
+        </p>
       </div>
     </div>
   </section>
+
+
 </main>
