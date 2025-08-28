@@ -261,3 +261,109 @@ body {
   font-size: 1.1rem;
   line-height: 1.6;
 }
+
+// 予約フォーム
+.reservation-card {
+  max-width: 700px;       /* 横幅を絞ると見やすい */
+  margin: 0 auto 50px;         /* 中央寄せ */
+  padding: 32px;          /* 余白を広めに */
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+  text-align: left;       /* フォームは左寄せ */
+}
+
+.form-grid {
+  padding: 20px 20px;
+  display: grid;
+  gap: 20px;
+}
+
+.form-grid .col {
+  grid-column: 1 / -1;    /* 横並びを崩して1列にする */
+}
+
+.span {
+  color: #ff4c4c;
+}
+
+/* 入力フィールド共通 */
+.form input:not([type="submit"]),
+.form select,
+.form textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+/* ボタンは通常幅 */
+.form input[type="submit"] { width: auto; }
+
+
+/* メッセージ欄だけ広めに */
+.form textarea {
+  min-height: 150px;         /* 高さを確保 */
+  resize: vertical;          /* ユーザーが高さ調整できるように */
+}
+
+.form-actions {
+  margin-top: 20px;
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+}
+
+@media (max-width: 640px){
+  .form-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .form input[type="submit"],
+  .form .btn { width: 100%; }
+}
+
+
+// map
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* 左右半分 */
+  gap: 20px;
+  align-items: start;
+}
+
+.map-embed {
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+}
+
+.map-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.access-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  align-items: center;   /* ← 縦方向の中央揃えに */
+}
+
+
+@supports not (aspect-ratio: 1) {
+  .map-embed { height: 300px; }
+}
+
+/* スマホでは縦並び */
+@media (max-width: 768px) {
+  .access-grid {
+    grid-template-columns: 1fr; /* 1列にする */
+  }
+}

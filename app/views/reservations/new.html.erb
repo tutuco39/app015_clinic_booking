@@ -1,2 +1,62 @@
-<h1>Reservations#new</h1>
-<p>Find me in app/views/reservations/new.html.erb</p>
+<section id="reservation" class="section">
+  <div class="container">
+    <h2>Web予約</h2>
+
+    <div class="card reservation-card">
+      <p class="muted">
+        午前 9:00–12:00（月〜土）／ 午後 16:00–19:00（月火木金）<br>
+        水曜午後・土曜午後・日曜・祝日は休診です。<br><br>
+        <span class="span">*</span>必須項目
+      </p>
+
+      <%= form_with model: @reservation, url: reservations_path, method: :post, class: "form" do |f| %>
+        <div class="grid form-grid">
+          <div>
+            <%= f.label :name, "お名前" %><span class="span">*</span><br>
+            <%= f.text_field :name, required: true %>
+          </div>
+          <div>
+            <%= f.label :email, "メール" %><span class="span">*</span><br>
+            <%= f.email_field :email, required: true %>
+          </div>
+          <div>
+            <%= f.label :tel, "電話番号" %><span class="span">*</span><br>
+            <%= f.telephone_field :tel %>
+          </div>
+
+          <div>
+            <label for="res_date">ご希望日</label><span class="span">*</span><br>
+            <input type="date" id="res_date" required>
+          </div>
+          <div>
+            <label for="res_time">ご希望時間（30分刻み）</label><span class="span">*</span><br>
+            <select id="res_time" required>
+              <option value="">日付を選ぶと候補が出ます</option>
+            </select>
+          </div>
+
+          <div>
+            <%= f.label :menu, "ご用件" %><span class="span">*</span><br>
+            <%= f.select :menu, ["初診（検診・痛み）","再診（治療の続き）","クリーニング・予防","矯正相談","ホワイトニング","その他"], include_blank: "選択してください" %>
+          </div>
+
+          <div>
+            <%= f.label :message, "メッセージ" %><br>
+            <%= f.text_area :message, rows: 4 %>
+          </div>
+        </div>
+
+        <%= hidden_field_tag "reservation[date]" %>
+        <%= hidden_field_tag "reservation[time]" %>
+
+        <div class="form-actions">
+          <%= f.submit "予約する", class: "btn btn-primary" %>
+          <%= link_to "トップへ戻る", root_path, class: "btn btn-ghost" %>
+        </div>
+      <% end %>
+
+      <% if flash[:notice] %><p class="notice"><%= flash[:notice] %></p><% end %>
+      <% if flash[:alert] %><p class="alert"><%= flash[:alert] %></p><% end %>
+    </div>
+  </div>
+</section>
