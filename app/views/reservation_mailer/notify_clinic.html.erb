@@ -1,0 +1,14 @@
+<p>新しい予約が入りました。</p>
+
+<ul>
+  <li><strong>お名前:</strong> <%= @reservation.name %></li>
+  <li><strong>メール:</strong> <%= @reservation.email %></li>
+  <li><strong>電話番号:</strong> <%= @reservation.tel %></li>
+  <li><strong>日時:</strong> <%= @reservation.starts_at.strftime("%Y年%m月%d日 %H:%M") %></li>
+  <li><strong>ご用件:</strong> <%= @reservation.menu %></li>
+  <% if @reservation.message.present? %>
+    <li><strong>メッセージ:</strong> <%= simple_format(@reservation.message) %></li>
+  <% end %>
+</ul>
+
+<p>Rails管理画面からも一覧を確認できます。</p>

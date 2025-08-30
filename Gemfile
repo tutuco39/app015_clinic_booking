@@ -11,6 +11,9 @@ gem "puma", ">= 5.0"
 # Use Dart SASS [https://github.com/rails/dartsass-rails]
 gem "dartsass-rails"
 
+gem "turbo-rails"
+
+
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem "tzinfo-data", platforms: %i[ windows jruby ]
 
@@ -25,8 +28,10 @@ group :development, :test do
   gem "rubocop-rails-omakase", require: false
 end
 
-
-
 gem "sassc-rails", "~> 2.1"
-
 gem "importmap-rails", "~> 2.2"
+
+group :development do
+  gem "letter_opener"
+  gem "letter_opener_web"   # ← /letter_opener で一覧画面を見れる便利版
+end
