@@ -1,6 +1,10 @@
 class Reservation < ApplicationRecord
   BUSINESS = { morning: { start: "09:00", end: "12:00" },
                afternoon: { start: "16:00", end: "19:00" } }
+  validates :name, :email, :tel, :menu, :starts_at, presence: true
+  validates :tel, format: { with: /\A\d{10,11}\z/, message: "はハイフンなし10〜11桁で入力してください" }
+  validates :starts_at, uniqueness: { message: "は既に予約があります。別の時間をお選びください" }
+
 
   def self.open_slots_for(date)
     d = Date.parse(date.to_s)

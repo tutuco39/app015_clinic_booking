@@ -1,2 +1,87 @@
-<h1>Reservations#index</h1>
-<p>Find me in app/views/reservations/index.html.erb</p>
+<section class="section">
+  <div class="container">
+    <h2>予約一覧（<%= @on.strftime("%Y/%m/%d") %>）</h2>
+
+    <!-- 日付切替フォーム（GETで自身に遷移） -->
+    <%= form_with url: reservations_path, method: :get, local: true, class: "date-switcher" do %>
+      <label for="on_date">表示日</label>
+      <%= date_field_tag :on, @on, id: "on_date",
+            min: Time.zone.today,  # 必要なら「過去も見たい」時は消してOK
+            onchange: "this.form.submit()" %>
+      <%= link_to "本日", reservations_path, class: "btn btn-ghost small" %>
+      <%= link_to "翌日", reservations_path(on: (@on + 1.day)), class: "btn btn-ghost small" %>
+      <%= link_to "翌々日", reservations_path(on: (@on + 2.days)), class: "btn btn-ghost small" %>
+
+    <% end %>
+
+    <div class="list-toolbar">
+      <div>
+        <span class="badge">未対応: <span id="count-pending">0</span></span>
+        <span class="badge ghost">対応済み: <span id="count-done">0</span></span>
+      </div>
+      <div class="muted small">
+        本日の予約を既定表示。日付を変えるとその日の予約が表示されます。
+      </div>
+    </div>
+
+    <!-- 未対応 -->
+    <div class="list-block">
+      <h3 class="list-title">未対応</h3>
+      <table class="checklist">
+        <thead>
+          <tr>
+            <th class="w-check"></th>
+            <th>予約希望日</th>
+            <th>名前</th>
+            <th>メール</th>
+            <th>電話</th>
+            <th>用件</th>
+            <th>メッセージ</th>
+            <th>予約の送信日</th>
+          </tr>
+        </thead>
+        <tbody id="pending-body">
+          <% if @reservations.present? %>
+            <% @reservations.each do |r| %>
+              <tr>
+                <td class="w-check"><input type="checkbox" class="mark-done" aria-label="対応済みに移動"></td>
+                <td><%= r.starts_at&.strftime("%Y/%m/%d %H:%M") %></td>
+                <td><%= r.name %></td>
+                <td><%= mail_to r.email, r.email %></td>
+                <td><%= r.tel %></td>
+                <td><%= r.menu %></td>
+                <td class="wrap"><%= simple_format(h(r.message)) %></td>
+                <td><%= r.created_at&.strftime("%Y/%m/%d %H:%M") %></td>
+              </tr>
+            <% end %>
+          <% else %>
+            <tr><td colspan="8" class="muted">この日には予約がありません。</td></tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- 対応済み -->
+    <div class="list-block soft">
+      <h3 class="list-title">対応済み</h3>
+      <table class="checklist ghost">
+        <thead>
+          <tr>
+            <th class="w-check"></th>
+            <th>予約希望日</th>
+            <th>名前</th>
+            <th>メール</th>
+            <th>電話</th>
+            <th>用件</th>
+            <th>メッセージ</th>
+            <th>予約の送信日</th>
+          </tr>
+        </thead>
+        <tbody id="done-body">
+          <tr class="placeholder"><td colspan="8" class="muted">対応済みの予約はまだありません。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+  </div>
+</section>
