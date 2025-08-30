@@ -26,6 +26,10 @@ module App015ClinicBooking
     config.time_zone = "Tokyo"
     config.active_record.default_timezone = :local
 
+    config.load_defaults 7.2
+    config.i18n.default_locale = :ja
+    config.i18n.available_locales = [:en, :ja]
+
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.

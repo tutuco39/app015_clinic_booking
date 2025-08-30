@@ -8,6 +8,89 @@
   --shadow: 0 1px 2px rgba(0,0,0,.06), 0 6px 24px rgba(0,0,0,.06);
 }
 
+/* === ブライトブルー基調のチェックリスト === */
+:root {
+  --brand-blue: #1e8bff;     /* ベースの明るい青 */
+  --brand-blue-ghost: #e8f2ff;
+}
+
+.date-switcher {
+  display: flex; align-items: center; gap: 10px;
+  margin: 8px 0 12px;
+}
+
+.date-switcher input[type="date"] {
+  padding: 8px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  font-size: 0.95rem;
+}
+
+.btn.small { padding: 6px 10px; font-size: 0.9rem; }
+
+.list-toolbar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin: 8px 0 12px;
+}
+
+.badge {
+  display: inline-block; padding: 6px 10px; border-radius: 999px;
+  background: var(--brand-blue); color: #fff; font-weight: 600;
+  margin-right: 8px;
+}
+
+.badge.ghost { background: var(--brand-blue-ghost); color: #155db2; }
+
+.list-block { margin-top: 16px; }
+.list-block.soft { margin-top: 24px; }
+
+.list-title {
+  display: inline-block; margin: 0 0 8px; padding-bottom: 4px;
+  border-bottom: 2px solid var(--brand-blue);
+  font-size: 1.1rem;
+}
+
+/* 表本体 */
+.checklist {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  box-shadow: var(--shadow);
+  font-size: 0.95rem;
+  border: 1px solid var(--line);
+}
+
+.checklist th, .checklist td {
+  border: 1px solid var(--line);
+  padding: 10px;
+  vertical-align: top;
+}
+
+.checklist thead th {
+  background: var(--brand-blue-ghost);
+  color: #0f4a9a;
+  text-align: left;
+}
+
+.checklist .w-check { width: 40px; text-align: center; }
+.checklist .wrap { white-space: normal; word-break: break-word; }
+
+/* 対応済みテーブルは淡色に */
+.checklist.ghost thead th { background: #f5f8ff; }
+.checklist.ghost tbody tr { opacity: 0.85; }
+
+.mark-done {
+  width: 18px; height: 18px; cursor: pointer;
+  accent-color: var(--brand-blue);
+}
+
+/* スマホ調整 */
+@media (max-width: 768px) {
+  .checklist th, .checklist td { padding: 8px; }
+  .wrap { max-width: 280px; }
+  .checklist { font-size: 0.9rem; }
+}
+
 body {
   margin: 0;
   background: var(--bg);

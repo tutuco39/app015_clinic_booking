@@ -20,7 +20,7 @@
             <%= f.email_field :email, required: true %>
           </div>
           <div>
-            <%= f.label :tel, "電話番号" %><span class="span">*</span><br>
+            <%= f.label :tel, "電話番号" %><span class="span">*</span><span class="small muted">　「-」なし</span><br>
             <%= f.telephone_field :tel %>
           </div>
 
@@ -28,12 +28,22 @@
             <label for="res_date">ご希望日</label><span class="span">*</span><br>
             <input type="date" id="res_date" required>
           </div>
+
           <div>
             <label for="res_time">ご希望時間（30分刻み）</label><span class="span">*</span><br>
-            <select id="res_time" required>
-              <option value="">日付を選ぶと候補が出ます</option>
+            <select id="res_time" name="reservation[time]" required>
+              <% if @slots.present? %>
+                <% @slots.each do |slot| %>
+                  <option value="<%= slot %>" <%= "selected" if slot == @reservation.starts_at&.strftime("%H:%M") %>>
+                    <%= slot %>
+                  </option>
+                <% end %>
+              <% else %>
+                <option value="">日付を選ぶと候補が出ます</option>
+              <% end %>
             </select>
           </div>
+
 
           <div>
             <%= f.label :menu, "ご用件" %><span class="span">*</span><br>

@@ -12,6 +12,8 @@ gem "puma", ">= 5.0"
 gem "dartsass-rails"
 
 gem "turbo-rails"
+gem "rails-i18n"
+gem "faker"
 
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
