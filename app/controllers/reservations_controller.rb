@@ -6,11 +6,22 @@ class ReservationsController < ApplicationController
   def create
     @reservation = Reservation.new(reservation_params)
     if @reservation.save
-      redirect_to new_reservation_path, notice: "予約を受け付けました。確認メールは後ほど設定します。"
+      # 患者への確認メール
+      ReservationMailer.confirmation(@reservation).deliver_later
+      # 医院への通知メール
+      ReservationMailer.notify_clinic(@reservation).deliver_later
+
+      redirect_to new_reservation_path, notice: "予約を受け付けました。確認メールを送信しました。"
     else
       flash.now[:alert] = @reservation.errors.full_messages.join(" / ")
       render :new, status: :unprocessable_entity
     end
+  end
+
+
+  def notify_clinic(reservation)
+    @reservation = reservation
+    mail to: "clinic_staff@example.com", subject: "【新規予約】#{reservation.name}様からの予約"
   end
 
   def index
